@@ -22,5 +22,10 @@ namespace MVC01.Controllers
         {
             return View();
         }
+
+        public IActionResult ListAllProducts()
+        {
+            return View();
+        }
     }
 }

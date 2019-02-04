@@ -5,12 +5,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Views\Product\ListAllProducts.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\Product\ListAllProducts.cshtml" />
   </ItemGroup>
 
 </Project>

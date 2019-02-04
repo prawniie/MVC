@@ -26,14 +26,16 @@ namespace MVC01
                 app.UseDeveloperExceptionPage();
             }
 
-            //app.UseStaticFiles();
+            app.UseStaticFiles();
             //app.UseDirectoryBrowser();
+
+
 
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller}/{action}");
+                    template: "{controller=Home}/{action=Index}"); //Gör så att default blir Home och Index
             });
 
             app.UseStatusCodePages();
