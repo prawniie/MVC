@@ -3,37 +3,23 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.IO;
 using ToDo.Models;
+using ToDo.Services;
 
 namespace ToDo.Controllers
 {
     public class TaskController : Controller
     {
-        public IHostingEnvironment _env;
+        private TaskRepository _repo;
 
-        public TaskController(IHostingEnvironment env)
+        public TaskController(TaskRepository repo)
         {
-            _env = env;
+            _repo = repo;
         }
 
         [HttpGet("GetAll")]
         public IActionResult GetAll()
         {
-            string root = _env.ContentRootPath;
-            string filename = Path.Combine(root, "Data", "tasks.txt");
-            string[] taskArray = System.IO.File.ReadAllLines(filename);
-
-            List<Task> tasks = new List<Task>();
-
-            foreach (var item in taskArray)
-            {
-                Task task = new Task();
-                string[] eachTaskArray = item.Split(",");
-                task.Id = int.Parse(eachTaskArray[0]);
-                task.Name = eachTaskArray[1];
-                task.Description = eachTaskArray[2];
-                task.Ranking = int.Parse(eachTaskArray[3]);
-                tasks.Add(task);
-            }
+            List<Task> tasks = _repo.GetAll();
 
             return View(tasks);
         }

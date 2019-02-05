@@ -1,13 +1,42 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Hosting;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using ToDo.Models;
 
 namespace ToDo.Services
 {
     public class TaskRepository
     {
-        
+        private IHostingEnvironment _env;
+
+        public TaskRepository(IHostingEnvironment env)
+        {
+            _env = env;
+        }
+
+        public List<Task> GetAll()
+        {
+            string root = _env.ContentRootPath;
+            string filename = Path.Combine(root, "Data", "tasks.txt");
+            string[] taskArray = System.IO.File.ReadAllLines(filename);
+
+            List<Task> tasks = new List<Task>();
+
+            foreach (var item in taskArray)
+            {
+                Task task = new Task();
+                string[] eachTaskArray = item.Split(",");
+                task.Id = int.Parse(eachTaskArray[0]);
+                task.Name = eachTaskArray[1];
+                task.Description = eachTaskArray[2];
+                task.Ranking = int.Parse(eachTaskArray[3]);
+                tasks.Add(task);
+            }
+
+            return tasks;
+        }
     }
 }
