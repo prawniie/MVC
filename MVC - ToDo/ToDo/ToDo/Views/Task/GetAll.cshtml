@@ -1,1 +1,30 @@
-﻿<h1>Tasks to do: </h1>
+﻿@using ToDo.Models;
+
+@model List<ToDo.Models.Task>;
+
+<style>
+    table, td {
+        margin: 10px;
+        border: 1px solid black;
+    }
+</style>
+
+<h1>Tasks to do: </h1>
+
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Ranking</th>
+    </tr>
+    @foreach (ToDo.Models.Task task in @Model)
+    {
+    <tr>
+        <td>@task.Id</td>
+        <td>@task.Name</td>
+        <td>@task.Description</td>
+        <td>@task.Ranking</td>
+    </tr>
+    }
+</table>
