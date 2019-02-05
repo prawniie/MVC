@@ -16,7 +16,6 @@ namespace ToDo.Controllers
             _repo = repo;
         }
 
-        [HttpGet("GetAll")]
         public IActionResult GetAll()
         {
             List<Task> tasks = _repo.GetAll();
