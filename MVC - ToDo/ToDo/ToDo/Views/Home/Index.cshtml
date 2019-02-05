@@ -1,11 +1,14 @@
-﻿
-<div class="jumbotron text-center" >
+﻿@model ToDo.Models.Task
+
+
+<div class="jumbotron text-center">
     <h1>Stuff to do</h1>
 </div>
 
 <div class="text-center">
     <a asp-controller="Task" asp-action="GetAll">See all tasks</a>
-    <a asp-controller="Task" asp-action="GetById">See task with id</a>
+    <a asp-controller="Task" asp-action="Index">Add or update task</a> 
+    @*Lägga till*@
 
     <hr />
 
@@ -14,8 +17,6 @@
         <input name="id" />
         <button type="submit">Ok</button>
     </form>
-    
-    <hr />
 
 
 </div>
