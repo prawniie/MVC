@@ -34,7 +34,7 @@ namespace ToDo
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller}/{action}");
+                    template: "{controller=Home}/{action=Index}/{id?}");
             });
 
             app.UseStatusCodePages();

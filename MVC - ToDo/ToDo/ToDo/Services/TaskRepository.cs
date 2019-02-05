@@ -38,5 +38,11 @@ namespace ToDo.Services
 
             return tasks;
         }
+
+        internal Task GetById(int id)
+        {
+            Task task = GetAll().Single(t => t.Id == id);
+            return task;
+        }
     }
 }

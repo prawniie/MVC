@@ -22,5 +22,11 @@ namespace ToDo.Controllers
 
             return View(tasks);
         }
+
+        public IActionResult GetById(int id)
+        {
+            Task task = _repo.GetById(1);
+            return View(task);
+        }
     }
 }
