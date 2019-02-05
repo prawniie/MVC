@@ -44,5 +44,17 @@ namespace ToDo.Services
             Task task = GetAll().Single(t => t.Id == id);
             return task;
         }
+
+        internal void Add(Task task)
+        {
+            string root = _env.ContentRootPath;
+            string filename = Path.Combine(root, "Data", "tasks.txt");
+
+            int count = GetAll().Count();
+            string input = $"{count + 1},{task.Name},{task.Description},{task.Ranking}\n";
+            File.AppendAllText(filename, input);
+
+
+        }
     }
 }

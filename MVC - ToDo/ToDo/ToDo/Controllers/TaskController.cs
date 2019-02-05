@@ -43,5 +43,12 @@ namespace ToDo.Controllers
             vm.AllTasks = list;
             return View(vm);
         }
+
+        [HttpPost]
+        public IActionResult Index(Task task)
+        {
+            _repo.Add(task);
+            return View("TaskAdded", task);
+        }
     }
 }
