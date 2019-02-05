@@ -1,5 +1,4 @@
-﻿@using ToDo.Models;
-
+﻿
 @model List<ToDo.Models.Task>;
 
 <style>
@@ -20,11 +19,11 @@
     </tr>
     @foreach (ToDo.Models.Task task in @Model)
     {
-    <tr>
-        <td>@task.Id</td>
-        <td>@task.Name</td>
-        <td>@task.Description</td>
-        <td>@task.Ranking</td>
-    </tr>
+        <tr>
+            <td>@task.Id</td>
+            <td>@task.Name</td>
+            <td>@task.Description</td>
+            <td>@task.Ranking</td>
+        </tr>
     }
 </table>
