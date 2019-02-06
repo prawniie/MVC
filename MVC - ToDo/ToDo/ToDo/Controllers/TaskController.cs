@@ -50,5 +50,12 @@ namespace ToDo.Controllers
             _repo.Add(task);
             return View("TaskAdded", task);
         }
+
+        //[HttpPut] Fixa
+        //public IActionResult Index(Task task)
+        //{
+        //    _repo.Update(task);
+        //    return View("TaskUpdated", task)
+        //}
     }
 }

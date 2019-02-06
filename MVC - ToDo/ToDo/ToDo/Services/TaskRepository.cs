@@ -36,7 +36,7 @@ namespace ToDo.Services
                 tasks.Add(task);
             }
 
-            return tasks;
+            return tasks.OrderByDescending(t => t.Ranking).ToList();
         }
 
         internal Task GetById(int id)
@@ -53,7 +53,6 @@ namespace ToDo.Services
             int count = GetAll().Count();
             string input = $"{count + 1},{task.Name},{task.Description},{task.Ranking}\n";
             File.AppendAllText(filename, input);
-
 
         }
     }
