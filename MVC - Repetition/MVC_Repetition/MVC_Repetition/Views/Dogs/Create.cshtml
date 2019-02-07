@@ -1,4 +1,4 @@
-﻿@model MVC_Repetition.Models.Dog
+﻿@model MVC_Repetition.Views.ViewModels.AddOwnerToDogVm
 @*Skicka in vymodell med ägare också så man kan välja från lista med ägare*@
 @{
     ViewData["Title"] = "Create";
@@ -13,20 +13,26 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
+                <label asp-for="Dog.Name" class="control-label"></label>
+                <input asp-for="Dog.Name" class="form-control" />
+                <span asp-validation-for="Dog.Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Breed" class="control-label"></label>
-                <input asp-for="Breed" class="form-control" />
-                <span asp-validation-for="Breed" class="text-danger"></span>
+                <label asp-for="Dog.Breed" class="control-label"></label>
+                <input asp-for="Dog.Breed" class="form-control" />
+                <span asp-validation-for="Dog.Breed" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="IsCute" class="control-label"></label>
-                <input asp-for="IsCute" class="form-control" type="checkbox" value="true"/>
-                <span asp-validation-for="IsCute" class="text-danger"></span>
+                <label asp-for="Dog.IsCute" class="control-label"></label>
+                <input asp-for="Dog.IsCute" class="form-control" type="checkbox" value="true" />
+                <span asp-validation-for="Dog.IsCute" class="text-danger"></span>
             </div>
+
+            <div class="form-group">
+                <label asp-for="Dog.Owner" class="control-label"></label>
+                <select asp-for="Dog.OwnerId" asp-items="Model.AllOwners" class="form-control"></select>
+            </div>
+
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />
             </div>

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MVC_Repetition.Data;
 using MVC_Repetition.Models;
+using MVC_Repetition.Views.ViewModels;
 
 namespace MVC_Repetition.Controllers
 {
@@ -22,7 +23,14 @@ namespace MVC_Repetition.Controllers
         // GET: Dogs
         public async Task<IActionResult> Index(int? id)
         {
-            return View(await _context.Dog.Include(d => d.Owner).Where(d => d.Owner.Id == id).ToListAsync());
+            if (id == null)
+            {
+                return View(await _context.Dog.Include(d => d.Owner).ToListAsync());
+            } else
+            {
+                return View(await _context.Dog.Include(d => d.Owner).Where(d => d.Owner.Id == id).ToListAsync());
+            }
+
         }
 
         // GET: Dogs/Details/5
@@ -46,7 +54,12 @@ namespace MVC_Repetition.Controllers
         // GET: Dogs/Create
         public IActionResult Create()
         {
-            return View();
+            var viewModel = new AddOwnerToDogVm()
+            {
+                AllOwners = _context.Owner.Select(x => new SelectListItem { Text = x.FirstName + " " + x.LastName, Value = x.Id.ToString()}).ToList()
+            };
+
+            return View(viewModel);
         }
 
         // POST: Dogs/Create
@@ -54,7 +67,7 @@ namespace MVC_Repetition.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Breed,IsCute")] Dog dog)
+        public async Task<IActionResult> Create([Bind("Id,Name,Breed,IsCute,OwnerId")] Dog dog)
         {
             if (ModelState.IsValid)
             {
