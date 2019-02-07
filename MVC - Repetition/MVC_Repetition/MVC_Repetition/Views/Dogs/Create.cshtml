@@ -1,10 +1,20 @@
 ﻿@model MVC_Repetition.Views.ViewModels.AddOwnerToDogVm
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<IdentityUser> UserManager
 @*Skicka in vymodell med ägare också så man kan välja från lista med ägare*@
 @{
     ViewData["Title"] = "Create";
 }
 
 <h2>Create</h2>
+
+@{
+        string message = ViewData["message"].ToString();
+    }
+
+<h2>Do you want to create a new dog @UserManager.GetUserName(User)</h2>
+
+<h2>A message to our users: @message</h2>
 
 <h4>Dog</h4>
 <hr />

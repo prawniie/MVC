@@ -6,37 +6,26 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MVC_Repetition.Data;
-using MVC_Repetition.Models;
-using MVC_Repetition.Views.ViewModels;
-using Microsoft.IdentityModel;
-using Microsoft.AspNetCore.Authorization;
+using MVC_Repetition.Models.Entities;
 
 namespace MVC_Repetition.Controllers
 {
-    [Authorize]
-    public class DogsController : Controller
+    public class TestsController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public DogsController(ApplicationDbContext context)
+        public TestsController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Dogs
-        public async Task<IActionResult> Index(int? id)
+        // GET: Tests
+        public async Task<IActionResult> Index()
         {
-            if (id == null)
-            {
-                return View(await _context.Dog.Include(d => d.Owner).ToListAsync());
-            } else
-            {
-                return View(await _context.Dog.Include(d => d.Owner).Where(d => d.Owner.Id == id).ToListAsync());
-            }
-
+            return View(await _context.Test.ToListAsync());
         }
 
-        // GET: Dogs/Details/5
+        // GET: Tests/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -44,45 +33,39 @@ namespace MVC_Repetition.Controllers
                 return NotFound();
             }
 
-            var dog = await _context.Dog
+            var test = await _context.Test
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (dog == null)
+            if (test == null)
             {
                 return NotFound();
             }
 
-            return View(dog);
+            return View(test);
         }
 
-        // GET: Dogs/Create
+        // GET: Tests/Create
         public IActionResult Create()
         {
-            var viewModel = new AddOwnerToDogVm()
-            {
-                AllOwners = _context.Owner.Select(x => new SelectListItem { Text = x.FirstName + " " + x.LastName, Value = x.Id.ToString()}).ToList()
-            };
-
-            ViewData["message"] = "Hej på dig";
-            return View(viewModel);
+            return View();
         }
 
-        // POST: Dogs/Create
+        // POST: Tests/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Breed,IsCute,OwnerId")] Dog dog)
+        public async Task<IActionResult> Create([Bind("Id,Name")] Test test)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(dog);
+                _context.Add(test);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(dog);
+            return View(test);
         }
 
-        // GET: Dogs/Edit/5
+        // GET: Tests/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -90,22 +73,22 @@ namespace MVC_Repetition.Controllers
                 return NotFound();
             }
 
-            var dog = await _context.Dog.FindAsync(id);
-            if (dog == null)
+            var test = await _context.Test.FindAsync(id);
+            if (test == null)
             {
                 return NotFound();
             }
-            return View(dog);
+            return View(test);
         }
 
-        // POST: Dogs/Edit/5
+        // POST: Tests/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Breed,IsCute")] Dog dog)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] Test test)
         {
-            if (id != dog.Id)
+            if (id != test.Id)
             {
                 return NotFound();
             }
@@ -114,12 +97,12 @@ namespace MVC_Repetition.Controllers
             {
                 try
                 {
-                    _context.Update(dog);
+                    _context.Update(test);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!DogExists(dog.Id))
+                    if (!TestExists(test.Id))
                     {
                         return NotFound();
                     }
@@ -130,10 +113,10 @@ namespace MVC_Repetition.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(dog);
+            return View(test);
         }
 
-        // GET: Dogs/Delete/5
+        // GET: Tests/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -141,30 +124,30 @@ namespace MVC_Repetition.Controllers
                 return NotFound();
             }
 
-            var dog = await _context.Dog
+            var test = await _context.Test
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (dog == null)
+            if (test == null)
             {
                 return NotFound();
             }
 
-            return View(dog);
+            return View(test);
         }
 
-        // POST: Dogs/Delete/5
+        // POST: Tests/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var dog = await _context.Dog.FindAsync(id);
-            _context.Dog.Remove(dog);
+            var test = await _context.Test.FindAsync(id);
+            _context.Test.Remove(test);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool DogExists(int id)
+        private bool TestExists(int id)
         {
-            return _context.Dog.Any(e => e.Id == id);
+            return _context.Test.Any(e => e.Id == id);
         }
     }
 }
