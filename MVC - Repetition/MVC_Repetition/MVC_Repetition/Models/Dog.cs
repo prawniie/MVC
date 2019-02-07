@@ -11,5 +11,7 @@ namespace MVC_Repetition.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string Breed { get; set; }
+        public bool IsCute { get; set; }
+        public Owner Owner { get; set; }
     }
 }

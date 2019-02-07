@@ -24,6 +24,11 @@
                 <span asp-validation-for="Breed" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="IsCute" class="control-label"></label>
+                <input asp-for="IsCute" class="form-control" type="checkbox" value="true" />
+                <span asp-validation-for="IsCute" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </form>

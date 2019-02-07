@@ -20,9 +20,9 @@ namespace MVC_Repetition.Controllers
         }
 
         // GET: Dogs
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? id)
         {
-            return View(await _context.Dog.ToListAsync());
+            return View(await _context.Dog.Include(d => d.Owner).Where(d => d.Owner.Id == id).ToListAsync());
         }
 
         // GET: Dogs/Details/5
@@ -54,7 +54,7 @@ namespace MVC_Repetition.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Breed")] Dog dog)
+        public async Task<IActionResult> Create([Bind("Id,Name,Breed,IsCute")] Dog dog)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace MVC_Repetition.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Breed")] Dog dog)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Breed,IsCute")] Dog dog)
         {
             if (id != dog.Id)
             {

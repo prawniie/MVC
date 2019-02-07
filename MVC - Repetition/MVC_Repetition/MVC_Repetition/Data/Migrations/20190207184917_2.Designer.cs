@@ -4,14 +4,16 @@ using MVC_Repetition.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MVC_Repetition.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190207184917_2")]
+    partial class _2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -267,7 +269,7 @@ namespace MVC_Repetition.Data.Migrations
 
             modelBuilder.Entity("MVC_Repetition.Models.Dog", b =>
                 {
-                    b.HasOne("MVC_Repetition.Models.Owner", "Owner")
+                    b.HasOne("MVC_Repetition.Models.Owner")
                         .WithMany("Dogs")
                         .HasForeignKey("OwnerId");
                 });
