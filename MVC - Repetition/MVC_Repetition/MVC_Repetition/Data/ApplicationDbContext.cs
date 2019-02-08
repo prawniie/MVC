@@ -17,5 +17,7 @@ namespace MVC_Repetition.Data
         public DbSet<MVC_Repetition.Models.Dog> Dog { get; set; }
         public DbSet<MVC_Repetition.Models.Owner> Owner { get; set; }
         public DbSet<MVC_Repetition.Models.Entities.Test> Test { get; set; }
+        public DbSet<MVC_Repetition.Models.Entities.Admin> Admin { get; set; }
+
     }
 }
