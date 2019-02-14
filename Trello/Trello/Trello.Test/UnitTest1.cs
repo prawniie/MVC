@@ -11,6 +11,8 @@ namespace Trello.Test
         {
             var ts = new TrelloService();
             List<TrelloRoot> result = ts.GetAllBoards().Result;
+
+
         }
 
         [TestMethod]
