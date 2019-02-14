@@ -26,7 +26,7 @@ namespace Trello.Test
         public void add_a_post_to_a_specific_list()
         {
             var ts = new TrelloService();
-            //ts.CreateAcardOnAlist("583ee6794a6d084557ae5c44", "en post", "beskrivning").Wait();
+            ts.CreateAcardOnAlist("5c5bec8b2e25ff7be13fb913", "en post", "beskrivning").Wait();
         }
     }
 }

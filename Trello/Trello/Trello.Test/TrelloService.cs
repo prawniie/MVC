@@ -61,9 +61,15 @@ namespace Trello.Test
 
         }
 
-        public async void CreateAcardOnAlist(string v1, string v2, string v3)
+        public async Task<string> CreateAcardOnAlist(string listId, string cardName, string cardDescription)
         {
-            throw new NotImplementedException();
+            //inte hårdkoda token och key-id
+            string page = $"https://api.trello.com/1/cards?name={cardName}&desc={cardDescription}&idList={listId}&key=7d7a36afe44b9e5fd79ae2c2d03b319e&token=98b5e984ee3607b1718c52978038a78927fb9bd8f5edb1c031de7ee32d3035e9";
+
+            var ts = new TrelloService();
+            string result = await ts.Post(page);
+            return result;
+
         }
 
         //public async Task<Rootobject> GetMeteorologicalForecast(decimal longitude, decimal latitude)
