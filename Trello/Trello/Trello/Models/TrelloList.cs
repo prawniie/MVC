@@ -9,12 +9,7 @@ namespace Trello.Models
     public class TrelloList
     {
 
-        public class Rootobject
-        {
-            public Class1[] Property1 { get; set; }
-        }
-
-        public class Class1
+        public class List
         {
             public string id { get; set; }
             public string name { get; set; }
@@ -27,30 +22,32 @@ namespace Trello.Models
             public string creationMethod { get; set; }
         }
 
+        public class OpenPerList
+        {
+            public string status { get; set; }
+            public int disableAt { get; set; }
+            public int warnAt { get; set; }
+        }
+
+        public class TotalPerList
+        {
+            public string status { get; set; }
+            public int disableAt { get; set; }
+            public int warnAt { get; set; }
+        }
+
+        public class Cards
+        {
+            public OpenPerList openPerList { get; set; }
+            public TotalPerList totalPerList { get; set; }
+        }
+
         public class Limits
         {
             public Cards cards { get; set; }
         }
 
-        public class Cards
-        {
-            public Openperlist openPerList { get; set; }
-            public Totalperlist totalPerList { get; set; }
-        }
 
-        public class Openperlist
-        {
-            public string status { get; set; }
-            public int disableAt { get; set; }
-            public int warnAt { get; set; }
-        }
-
-        public class Totalperlist
-        {
-            public string status { get; set; }
-            public int disableAt { get; set; }
-            public int warnAt { get; set; }
-        }
 
     }
 }

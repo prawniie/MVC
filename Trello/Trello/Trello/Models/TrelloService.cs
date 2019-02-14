@@ -5,7 +5,6 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using static Trello.Models.TrelloRoot;
 
 namespace Trello.Models
 {
@@ -37,14 +36,14 @@ namespace Trello.Models
             }
         }
 
-        public async Task<List<TrelloRoot>> GetAllBoards()
+        public async Task<List<TrelloBoard>> GetAllBoards()
         {
 
             string page = $"https://api.trello.com/1/members/me/boards?key=7d7a36afe44b9e5fd79ae2c2d03b319e&token=98b5e984ee3607b1718c52978038a78927fb9bd8f5edb1c031de7ee32d3035e9";
 
             var ts = new TrelloService();
             var result = await ts.Get(page);
-            return JsonConvert.DeserializeObject<List<TrelloRoot>>(result);
+            return JsonConvert.DeserializeObject<List<TrelloBoard>>(result);
 
         }
 

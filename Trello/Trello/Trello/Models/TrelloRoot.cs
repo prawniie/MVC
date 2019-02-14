@@ -6,15 +6,11 @@ using System.Threading.Tasks;
 
 namespace Trello.Models
 {
-    public class TrelloRoot
+    public class TrelloBoard
     {
+        //testade att använda sajt som genererade klasser utefter kod, då kom ej någon lista med under rootobject klassen utan objekt direkt.
 
-        public class Rootobject
-        {
-            public Class1[] Property1 { get; set; }
-        }
-
-        public class Class1
+        public class Board
         {
             public string name { get; set; }
             public string desc { get; set; }
@@ -24,9 +20,9 @@ namespace Trello.Models
             public object limits { get; set; }
             public object pinned { get; set; }
             public string shortLink { get; set; }
-            public object[] powerUps { get; set; }
+            public List<object> powerUps { get; set; }
             public DateTime dateLastActivity { get; set; }
-            public object[] idTags { get; set; }
+            public List<object> idTags { get; set; }
             public object datePluginDisable { get; set; }
             public string creationMethod { get; set; }
             public string id { get; set; }
@@ -34,10 +30,17 @@ namespace Trello.Models
             public string url { get; set; }
             public Prefs prefs { get; set; }
             public bool subscribed { get; set; }
-            public Labelnames labelNames { get; set; }
+            public LabelNames labelNames { get; set; }
             public DateTime dateLastView { get; set; }
             public string shortUrl { get; set; }
-            public Membership[] memberships { get; set; }
+            public List<Membership> memberships { get; set; }
+        }
+
+        public class BackgroundImageScaled
+        {
+            public int width { get; set; }
+            public int height { get; set; }
+            public string url { get; set; }
         }
 
         public class Prefs
@@ -52,7 +55,7 @@ namespace Trello.Models
             public bool calendarFeedEnabled { get; set; }
             public string background { get; set; }
             public string backgroundImage { get; set; }
-            public Backgroundimagescaled[] backgroundImageScaled { get; set; }
+            public List<BackgroundImageScaled> backgroundImageScaled { get; set; }
             public bool backgroundTile { get; set; }
             public string backgroundBrightness { get; set; }
             public string backgroundBottomColor { get; set; }
@@ -64,14 +67,7 @@ namespace Trello.Models
             public bool canInvite { get; set; }
         }
 
-        public class Backgroundimagescaled
-        {
-            public int width { get; set; }
-            public int height { get; set; }
-            public string url { get; set; }
-        }
-
-        public class Labelnames
+        public class LabelNames
         {
             public string green { get; set; }
             public string yellow { get; set; }
@@ -93,6 +89,8 @@ namespace Trello.Models
             public bool unconfirmed { get; set; }
             public bool deactivated { get; set; }
         }
+
+
 
     }
 }
