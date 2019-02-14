@@ -1,0 +1,80 @@
+﻿@model MVC02.Models.ViewModels.ContactVm
+@{
+    ViewData["Title"] = "Contact";
+}
+@{
+    string message = ViewData["Message"].ToString();
+}
+
+<h2>Contact us</h2>
+<div class="container" id="displayer">
+        <div class="col-md-6">
+            <form>
+                <h3>FAQ</h3>
+
+                <p>
+                    <b> Saknar du en vara i webbshopen?</b><br />
+                    Varan är då tyvärr slut, följ oss gärna på Facebook och Instagram där vi lägger upp direkt när det kommer in nya leveranser.
+                    <br />
+                    <b>  Önskar du expresshantering inom Sverige?</b><br />
+                    Maila oss på info@TheShop.se så kan vi förhoppningsvis lösa det. Ordern måste då vara lagd mot faktura.
+                    Det tillkommer 39 kr i expressavgift.
+                    <br />
+                    <b> Hur gör jag ett byte?</b><br />
+                    Vid ett byte så lägger du själv en helt ny beställning i webbshopen. Du fyller i ditt första ordernummer och namn på retursedeln.
+                    Längre ner kryssar du i rutan för byte och skriver i ditt nya ordernummer som du fick med i den nya beställningen. Du hittar all info i våra köpvillkor.
+                    <br />
+                    <b> Hur lång är eran leveranstid?</b><br />
+                    Vi har 1-3 arbetsdagars leveranstid.
+                    <br />
+                    <b>Kan jag ändra/avbeställa en order?</b><br />
+                    Tyvärr är detta inget du kan göra själv. Men maila oss på info@TheShop.se så kan vi hjälpa er så länge er order inte blivit behandlad.
+                </p>
+            </form>
+        </div>
+
+    <div class="col-md-6" id="displayer">
+
+        <form asp-action="ContactDone">
+            <h2>Contact us:</h2><br />
+
+            <label for="contactinfo">Name:</label>
+            <input type="text" class="form-control" asp-for="Name"><br />
+
+            <label for="contactinfo">E-mail:</label>
+            <input type="email" class="form-control" asp-for="Email"><br />
+
+            <label for="contactinfo">Subject:</label><br />
+            <select for="contactinfo" asp-for="Subject">
+                <option for="contactinfo" value="Orderdetails">Order Details</option>
+                <option for="contactinfo" value="Work">Work Here</option>
+                <option for="contactinfo" value="user">User Details</option>
+                <option for="contactinfo" value="other">Other</option>
+            </select><br />
+
+            <label for="for=" contactinfo"">Message:</label>
+            <textarea class="form-control" rows="5" asp-for="Message"></textarea>
+            <br />
+            <button type="submit">Send!</button>
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div style="color:darkgreen">@message</div>
+
+
+        </form>
+
+    </div>
+
+
+</div>
+<script>
+    function SendForm() {
+
+        contactConfiraiton = document.getElementById("contactConfiraiton");
+
+        var text = "Thank you for contacting us! We will get back to you shortly."
+
+        contactConfiraiton.innerHTML = `<p style="color: green">${text}</p>`
+
+    }
+</script>
+

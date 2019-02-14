@@ -1,0 +1,118 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
+for details on configuring this project to bundle and minify static web assets. */
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+.navbar {
+    background-color: #e3f2fd;
+    
+}
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Carousel */
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+/* Make .svg files in the carousel display properly in older browsers */
+.carousel-inner .item img[src$=".svg"] {
+    width: 100%;
+}
+
+/* QR code generator */
+#qrCode {
+    margin: 15px;
+}
+
+/* Hide/rearrange for smaller screens */
+@media screen and (max-width: 767px) {
+    /* Hide captions */
+    .carousel-caption {
+        display: none;
+    }
+}
+
+#welcome {
+    width: inherit;
+}
+
+#togreen:hover {
+    color: forestgreen;
+}
+
+.cl-effect-1 a::before,
+.cl-effect-1 a::after {
+    display: inline-block;
+    opacity: 0;
+    -webkit-transition: -webkit-transform 0.3s, opacity 0.2s;
+    -moz-transition: -moz-transform 0.3s, opacity 0.2s;
+    transition: transform 0.3s, opacity 0.2s;
+}
+
+.cl-effect-1 a::before {
+    margin-right: 10px;
+    content: '[';
+    -webkit-transform: translateX(20px);
+    -moz-transform: translateX(20px);
+    transform: translateX(20px);
+}
+
+.cl-effect-1 a::after {
+    margin-left: 10px;
+    content: ']';
+    -webkit-transform: translateX(-20px);
+    -moz-transform: translateX(-20px);
+    transform: translateX(-20px);
+}
+
+.cl-effect-1 a:hover::before,
+.cl-effect-1 a:hover::after,
+.cl-effect-1 a:focus::before,
+.cl-effect-1 a:focus::after {
+    opacity: 1;
+    -webkit-transform: translateX(0px);
+    -moz-transform: translateX(0px);
+    transform: translateX(0px);
+    color: forestgreen;
+}
+
+
+#messageDispalyer
+{
+    width: 600px;
+    border: double;
+    border-width: 5px;
+    border-color: cadetblue;
+    margin: 20px;
+    padding: 20px;
+}
+
+#displayer {
+    border: double;
+    border-width: 5px;
+    border-color: cadetblue;
+    padding: 20px;
+}
+#homeDisplayer {
+    width: 1200px;
+    height: 800px;
+    border: double;
+    border-width: 5px;
+    border-color: cadetblue;
+    background-image:url(https://images.unsplash.com/photo-1515678916313-2263ebfad5cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80);
+    background-size: 100%;
+}
+
+#navbar1 {
+    font-family: 'Special Elite', cursive;
+    font-size:small;
+}
+

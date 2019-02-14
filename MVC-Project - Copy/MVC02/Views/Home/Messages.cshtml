@@ -1,0 +1,21 @@
+﻿@using MVC02.Models.ViewModels;
+<h2>Messages</h2>
+
+@{
+    List<ContactVm> messages = (List<ContactVm>) ViewData["Messages"];
+
+}
+
+@foreach (ContactVm x in messages)
+{
+<div id="messageDispalyer">
+
+    <h4>Message:</h4><br />
+    <b>Name:</b> @x.Name <br />
+    <b>Email:</b> @x.Email <br />
+    <b>Subject:</b> @x.Subject <br />
+    <b>Message:</b> @x.Message <br />
+    <br />
+</div>
+    
+}

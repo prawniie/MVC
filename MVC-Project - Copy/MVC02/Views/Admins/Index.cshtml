@@ -1,0 +1,32 @@
+﻿@model MVC02.Models.ViewModels.AddRoleVm
+
+<h2>Admin</h2>
+<div class="row" id="displayer">
+    <div class="col-md-4">
+        <form asp-controller="Admins" asp-action="AddRoleForUser">
+
+            <div class="form-group">
+                <label asp-for="Email">Users</label>
+                <select class="form-control" asp-for="Email" asp-items="@Model.AllUsers">
+                    <option>Please select one</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Role">Roles</label>
+                <select class="form-control" asp-for="Role" asp-items="@Model.AllRoles">
+                    <option>Please select one</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
