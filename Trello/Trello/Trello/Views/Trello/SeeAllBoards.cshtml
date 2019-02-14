@@ -1,0 +1,27 @@
+﻿@model TrelloVm
+
+<h2>Alla boards</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Board)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    @*<tbody>
+            @foreach (var item in Model.Boards)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem =>)
+                    </td>
+                    </td>
+                </tr>
+            }
+        </tbody>*@
+</table>
+<hr />
+
+<a asp-action="Index">Back to Trello stuff</a>
